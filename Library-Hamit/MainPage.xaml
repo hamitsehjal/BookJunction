@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Library_Hamit.MainPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             
+             >
+
+    <StackLayout>
+      <Image x:Name="background" Aspect="AspectFill" />
+
+        <StackLayout Orientation="Vertical" HorizontalOptions="Center" Padding="30" Spacing="40">
+            
+
+            <Frame BackgroundColor="AntiqueWhite" HasShadow="True">
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Entry x:Name="usernameEntry" 
+                           Placeholder="Username"
+                           PlaceholderColor="Black"
+                           HeightRequest="40"
+                           WidthRequest="300"
+                           Keyboard="Default"
+                           TextColor="Black"
+                           />
+                    <Entry x:Name="passwordEntry" 
+                           Placeholder="Password"
+                           PlaceholderColor="Black"
+                           HeightRequest="40"
+                           IsPassword="True"
+                           TextColor="Black"/>
+                </StackLayout>
+            </Frame>
+            <Button Text="Login" TextColor="Black"
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"
+                    BackgroundColor="#088da5" Clicked="Login_Clicked"
+                    />
+            <Frame x:Name="errorFrame" Padding="10,5,5,10" CornerRadius="5">
+                <Label x:Name="errors" Text="" 
+                       LineBreakMode="WordWrap"
+                       TextColor="White"
+                       FontSize="14"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"/>
+            </Frame>
+
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

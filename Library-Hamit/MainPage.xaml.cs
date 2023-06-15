@@ -42,7 +42,7 @@ namespace Library_Hamit
                     errors.Text = "";
                     passwordEntry.Text = "";
                     usernameEntry.Text="";
-                    await Navigation.PushAsync(new BookList());
+                    await Navigation.PushAsync(new BookList(usernameEntered));
 
                     }
                 else
@@ -61,7 +61,7 @@ namespace Library_Hamit
                     errors.Text = "";
                     passwordEntry.Text = "";
                     usernameEntry.Text = "";
-                    await Navigation.PushAsync(new BookList());
+                    await Navigation.PushAsync(new BookList(usernameEntered));
 
                     }
                 else

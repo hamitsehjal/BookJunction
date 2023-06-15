@@ -4,12 +4,13 @@
              x:Class="Library_Hamit.BookList"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="True"
-             Title="Welcome to Library"
+             Title="BookJunction"
              >
         
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="This is our Library"/>
+        <StackLayout Spacing="20" Padding="16">
+            <Label Text="Welcome to BookJunction" FontSize="21" HorizontalTextAlignment="Center"/>
+            <Label x:Name="user" FontSize="18"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

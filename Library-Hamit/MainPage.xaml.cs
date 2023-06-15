@@ -16,36 +16,40 @@ namespace Library_Hamit
             background.Source = ImageSource.FromResource("Library-Hamit.images.lib-background.jpg");
             }
         
-        void Login_Clicked(object sender, EventArgs e)
+        async void Login_Clicked(object sender, EventArgs e)
             {
             string passwordEntered = passwordEntry.Text;
             string usernameEntered= usernameEntry.Text;
 
-            if (string.IsNullOrWhiteSpace(passwordEntered))
-                {
-                System.Console.WriteLine("Password REQUIRED");
-                errorFrame.BackgroundColor = Color.Red;
-                }
-            else if (string.IsNullOrWhiteSpace(usernameEntered))
+            if (string.IsNullOrWhiteSpace(usernameEntered))
                 {
                 System.Console.WriteLine("Username REQUIRED");
                 errorFrame.BackgroundColor = Color.Red;
+                errors.Text = "Username REQUIRED";
+                }
+            else if (string.IsNullOrWhiteSpace(passwordEntered))
+                {
+                System.Console.WriteLine("Password REQUIRED");
+                errorFrame.BackgroundColor = Color.Red;
+                errors.Text = "Password REQUIRED";
                 }
             else if(usernameEntered=="peter")
                 {
                 if(passwordEntered=="1234")
                     {
                 System.Console.WriteLine("VALIDATION PASSED!!");
-                errors.Text = "";
-                passwordEntry.Text = "";
-                usernameEntry.Text="";
-                errorFrame.BackgroundColor= Color.White;
+                    errorFrame.BackgroundColor= Color.White;
+                    errors.Text = "";
+                    passwordEntry.Text = "";
+                    usernameEntry.Text="";
+                    await Navigation.PushAsync(new BookList());
 
                     }
                 else
                     {
                     System.Console.WriteLine("Wrong Password");
                     errorFrame.BackgroundColor = Color.Red;
+                    errors.Text = "Wrong Password";
                     }
                 }
             else if (usernameEntered == "mary")
@@ -53,16 +57,18 @@ namespace Library_Hamit
                 if (passwordEntered == "0000")
                     {
                     System.Console.WriteLine("VALIDATION PASSED!!");
+                    errorFrame.BackgroundColor = Color.White;
                     errors.Text = "";
                     passwordEntry.Text = "";
                     usernameEntry.Text = "";
-                    errorFrame.BackgroundColor = Color.White;
+                    await Navigation.PushAsync(new BookList());
 
                     }
                 else
                     {
                     System.Console.WriteLine("Wrong Password");
                     errorFrame.BackgroundColor = Color.Red;
+                    errors.Text = "Wrong Password";
                     }
                 }
             else

@@ -8,9 +8,24 @@
              >
         
     <ContentPage.Content>
-        <StackLayout Spacing="20" Padding="16">
+        <StackLayout Spacing="20" Padding="16" >
             <Label Text="Welcome to BookJunction" FontSize="21" HorizontalTextAlignment="Center"/>
             <Label x:Name="user" FontSize="18"/>
+
+            <Frame HorizontalOptions="Center" VerticalOptions="Center" >
+
+                <CollectionView x:Name="collectionView">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Spacing="5">
+                                <Label Text="{Binding Author}" FontSize="Small"/>
+                                <Label Text="{Binding Title}" FontSize="Medium"/>
+                                <Label Text="{Binding Id}" FontSize="Small" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

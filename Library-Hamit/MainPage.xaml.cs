@@ -10,6 +10,7 @@ namespace Library_Hamit
     {
     public partial class MainPage : ContentPage
         {
+       
         public MainPage()
             {
             InitializeComponent();

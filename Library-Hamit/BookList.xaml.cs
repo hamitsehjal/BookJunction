@@ -12,7 +12,12 @@ namespace Library_Hamit
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class BookList : ContentPage
     {
-    public BookList(string username)
+        protected override async void OnAppearing()
+            {
+            base.OnAppearing();
+            collectionView.ItemsSource = await App.Database.GetBooksAsync();
+            }
+        public BookList(string username)
         {
         InitializeComponent();
 

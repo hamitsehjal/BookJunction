@@ -4,28 +4,41 @@
              x:Class="Library_Hamit.BookList"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="True"
-             Title="BookJunction"
+            
              >
         
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="16" >
-            <Label Text="Welcome to BookJunction" FontSize="21" HorizontalTextAlignment="Center"/>
-            <Label x:Name="user" FontSize="18"/>
+            <Label Text="Books List" FontSize="21" HorizontalTextAlignment="Center"/>
+            <Label x:Name="user" FontSize="18" HorizontalTextAlignment="Center"/>
 
-            <Frame HorizontalOptions="Center" VerticalOptions="Center" >
-
-                <CollectionView x:Name="collectionView">
-                    <CollectionView.ItemTemplate>
+                <ListView x:Name="listOfBooks" ItemSelected="OnItemsSelected">
+                    <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout Spacing="5">
-                                <Label Text="{Binding Author}" FontSize="Small"/>
-                                <Label Text="{Binding Title}" FontSize="Medium"/>
-                                <Label Text="{Binding Id}" FontSize="Small" />
-                            </StackLayout>
+                            <ViewCell Height="100">
+                                <!-- Adjust the desired height here -->
+                                <ViewCell.ContextActions>
+                                    <MenuItem Text="Borrow" Clicked="Clicked_Borrowed"/>
+                                    <MenuItem Text="Return" Clicked="Clicked_Return"/>
+                                </ViewCell.ContextActions>
+
+                                <Grid   HeightRequest="80" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Text="{Binding Title}" FontSize="Medium" Grid.Row="0"/>
+                                    <Label Text="{Binding Author}" FontSize="Small" Grid.Row="1"/>
+                                </Grid>
+                            </ViewCell>
                         </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            <Frame Padding="10" Margin="10" BackgroundColor="LightGray">
+                <Label x:Name="bookStatus" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center"/>
             </Frame>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

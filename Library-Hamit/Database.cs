@@ -33,9 +33,29 @@ namespace Library_Hamit
             _database.InsertAllAsync(books).Wait();
             }
 
-        public Task<List<Book>> GetBooksAsync()
+        public async Task<List<Book>> GetBooksAsync()
             {
-            return _database.Table<Book>().ToListAsync();
+            return await _database.Table<Book>().ToListAsync();
+            }
+
+        // Get a single Item by its primary Key
+        public async Task<Book> GetBookById(int id)
+            {
+            return await _database.GetAsync<Book>(id);
+            }
+
+        // Get a single Item by its "Title"
+        public async Task<Book> GetBookByTitle(string title)
+            {
+            return await _database.Table<Book>().FirstOrDefaultAsync(b=>b.Title== title);
+            }
+
+        // update the book
+        public async Task<int> UpdateBook(Book book)
+            {
+            return await _database.UpdateAsync(book);
             }
     }
+
+
 }
